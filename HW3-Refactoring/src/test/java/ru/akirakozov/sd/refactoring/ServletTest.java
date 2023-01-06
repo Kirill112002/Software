@@ -26,6 +26,8 @@ import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import static org.junit.Assert.assertEquals;
+
 
 public class ServletTest {
 
@@ -121,5 +123,29 @@ public class ServletTest {
                         (it[0].equals("Mouse") && it[1].equals("50")) ||
                         (it[0].equals("TV") && it[1].equals("100"))));
 
+        endTest();
+    }
+
+    public String getCommand(String answer) {
+        return Jsoup.parse(answer).body().childNodes().get(2).toString().trim().split("\\s(?=\\b(\\d+(?:\\.\\d+)?)$)")[1];
+    }
+
+    public String getEdit(String answer, int number) {
+        return Jsoup.parse(answer).body().childNodes().get(0).toString().split(" ")[number];
+    }
+
+    @Test
+    public void testFunctions() throws IOException, InterruptedException {
+
+        sendRequest("http://localhost:8081/add-product?name=Laptop&price=200");
+        sendRequest("http://localhost:8081/add-product?name=Iphone11&price=150");
+        sendRequest("http://localhost:8081/add-product?name=Mouse&price=50");
+        sendRequest("http://localhost:8081/add-product?name=TV&price=100");
+        sendRequest("http://localhost:8081/add-product?name=Button&price=25");
+        assertEquals(getCommand(sendRequest("http://localhost:8081/query?command=max")), "200");
+        assertEquals(getCommand(sendRequest("http://localhost:8081/query?command=min")), "25");
+        assertEquals(getEdit(sendRequest("http://localhost:8081/query?command=sum"), 3), "525");
+        assertEquals(getEdit(sendRequest("http://localhost:8081/query?command=count"), 4), "5");
+        endTest();
     }
 }
