@@ -6,6 +6,10 @@ import java.sql.*;
 
 public abstract class MethodServlet extends Servlet {
 
+    public MethodServlet(String connectionDatabase) {
+        super(connectionDatabase);
+    }
+
     protected abstract String getQuery(Parameters parameters);
 
     protected String getInvalidAnswer() {

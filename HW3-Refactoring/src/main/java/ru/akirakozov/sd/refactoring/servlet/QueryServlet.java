@@ -9,7 +9,11 @@ import java.sql.*;
  * @author akirakozov
  */
 public class QueryServlet extends MethodServlet {
-    
+
+    public QueryServlet(String connectionDatabase) {
+        super(connectionDatabase);
+    }
+
     @Override
     protected String getQuery(Parameters parameters) {
         String command = parameters.parameters.get("command")[0];

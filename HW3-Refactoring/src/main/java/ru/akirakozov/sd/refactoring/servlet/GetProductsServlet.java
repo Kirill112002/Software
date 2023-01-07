@@ -9,6 +9,10 @@ import java.sql.*;
  */
 public class GetProductsServlet extends MethodServlet {
 
+    public GetProductsServlet(String connectionDatabase) {
+        super(connectionDatabase);
+    }
+
     @Override
     protected String getQuery(Parameters parameters) {
         return "SELECT * FROM PRODUCT";
