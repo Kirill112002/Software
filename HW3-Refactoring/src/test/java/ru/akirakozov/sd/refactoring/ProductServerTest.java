@@ -31,8 +31,6 @@ import static org.junit.Assert.assertEquals;
 
 public class ProductServerTest {
 
-    public static Logger logger = Logger.getLogger(ProductServerTest.class.getName());
-
     public static final ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     @BeforeClass
@@ -55,7 +53,6 @@ public class ProductServerTest {
     public static void afterALl() {
         executorService.shutdown();
     }
-
 
     private static void removeAllFromTable() {
         try (Connection c = DriverManager.getConnection("jdbc:sqlite:test.db")) {

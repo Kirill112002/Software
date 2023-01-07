@@ -35,7 +35,7 @@ public abstract class Servlet extends HttpServlet {
     public void sendLineHtml(HttpServletResponse response, String s) throws IOException {
         response.getWriter().println(s);
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try (Connection connection = DriverManager.getConnection(connectionDatabase)) {
