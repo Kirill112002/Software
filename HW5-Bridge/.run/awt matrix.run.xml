@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="awt matrix" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="ru.Kirill112002.sd.lab5.Application" />
+    <module name="lab5" />
+    <option name="PROGRAM_PARAMETERS" value="-draw awt -w 800 -h 600 -t matrix -f example/matrix/2.txt" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="ru.Kirill112002.sd.lab5.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
